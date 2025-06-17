@@ -1,4 +1,3 @@
-//
 use aes::Aes256;
 use aes::cipher::{
     BlockCypher, BlockEncrypt, BlockDecrypt, KeyInit, generic_array::GenericArray
@@ -21,6 +20,11 @@ fn main() -> io::Result<()> {
 
 fn encrypt(name: &str) {
 
-    let mut file = File::open(name.trim());
-
+    //read file into u8s
+    let data: Vec<u8> = fs::read(name.trim();)
+        
+    let key = GenericArray::from([0u8; 16]);
+    let cipher = Aes128::new(&key);
+    let dataCopy = data.clone();
+    cipher.encrypt_block(&mut dataCopy);
 }
