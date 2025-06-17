@@ -1,30 +1,20 @@
-use aes::Aes256;
-use aes::cipher::{
-    BlockCypher, BlockEncrypt, BlockDecrypt, KeyInit, generic_array::GenericArray
-};
-use std::io::{prelude::*, BufReader};
-use std::fs::File;
+
+use std::fs;
+use rand::Rng;
+use std::io;
 
 
 fn main() -> io::Result<()> {
 
-    //Get file for packing
+    println!("What file would you like to pack?");
+    let file = ask_for_input()?;
+    let data: Vec<u8> = fs::read(file)?;
+    println!("What would you like the key to be? (")
+    Ok(())
+} 
 
+fn ask_for_input() -> io::Result<String> {
     let mut input = String::new();
-    println!("Enter file name to pack: \n>");
     io::stdin().read_line(&mut input)?;
-    
-    let data = encrypt(&input);
-    add_stub();
-}
-
-fn encrypt(name: &str) {
-
-    //read file into u8s
-    let data: Vec<u8> = fs::read(name.trim();)
-        
-    let key = GenericArray::from([0u8; 16]);
-    let cipher = Aes128::new(&key);
-    let dataCopy = data.clone();
-    cipher.encrypt_block(&mut dataCopy);
+    return Ok(input)
 }
