@@ -1,3 +1,4 @@
+use aes_gcm::AeadInPlace;
 use aes_gcm::aead::{Aead, OsRng, rand_core::RngCore};
 use aes_gcm::Aes256Gcm;
 use aes_gcm::AeadCore;
@@ -16,6 +17,7 @@ fn main() -> io::Result<()> {
     };
     //put file into u8 vec
     let data: Vec<u8> = fs::read(file)?;
+    encrypt(data);
     Ok(())
 } 
 
@@ -25,15 +27,16 @@ fn ask_for_input() -> io::Result<String> {
     return Ok(input)
 }
 
-fn encrypt(file: Vec<u8>) -> Result<Vec<u8>> {
+fn encrypt(file: Vec<u8>) -> io::Result<Vec<u8>> {
     //setup encryption variables
     let key = Aes256Gcm::generate_key(&mut OsRng);
     let cipher = Aes256Gcm::new(&key);
     let nonce = Aes256Gcm::generate_nonce(&mut OsRng);
 
-    let mut buffer: Vec<u8, > = Vec::new();
+    let mut buffer: Vec<u8> = Vec::new();
     buffer.extend_from_slice(&file);
-
+    cipher.encrypt_in_place(&nonce, b"", &mut buffer).expect("Encrypt Error");
+    Ok(buffer)
 
 
 }
