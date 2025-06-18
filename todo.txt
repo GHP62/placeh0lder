@@ -1,0 +1,7 @@
+modules:
+ - microphone
+ - screenshot
+ - command prompt matrix text
+ - shell accesss
+ - sys utils (shut down, reboot, self delete)
+ - :3
