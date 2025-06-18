@@ -1,12 +1,12 @@
 use aes_gcm::AeadInPlace;
-use aes_gcm::aead::{Aead, OsRng, rand_core::RngCore};
+use aes_gcm::aead::OsRng;
 use aes_gcm::Aes256Gcm;
 use aes_gcm::AeadCore;
 use std::fs;
-use rand::Rng;
 use std::io;
-use aes_gcm::Key;
 use aes_gcm::KeyInit;
+use std::fs::File;
+use std::io::Write;
 fn main() -> io::Result<()> {
     //Ask user for file they wanna pack
     println!("What file would you like to pack?");
@@ -15,9 +15,19 @@ fn main() -> io::Result<()> {
         Err(e) => return Err(e),
         Ok(file) => file,
     };
-    //put file into u8 vec
-    let data: Vec<u8> = fs::read(file)?;
-    encrypt(data);
+    //put file into u8 vec to &[u8]
+    let data: Vec<u8> = fs::read(&file.trim())?;
+    let encrypted_data = match encrypt(data) {
+        Err(e) => return Err(e),
+        Ok(encrypted_data) => encrypted_data,
+    };
+    
+    let data_ref = &encrypted_data; 
+    let data_u8: &[u8] = &data_ref;
+
+
+    let mut output = File::create(format!("encrypted-{}", file.trim()))?;
+    output.write_all(data_u8)?;
     Ok(())
 } 
 
@@ -32,7 +42,7 @@ fn encrypt(file: Vec<u8>) -> io::Result<Vec<u8>> {
     let key = Aes256Gcm::generate_key(&mut OsRng);
     let cipher = Aes256Gcm::new(&key);
     let nonce = Aes256Gcm::generate_nonce(&mut OsRng);
-
+    //Encryption
     let mut buffer: Vec<u8> = Vec::new();
     buffer.extend_from_slice(&file);
     cipher.encrypt_in_place(&nonce, b"", &mut buffer).expect("Encrypt Error");
