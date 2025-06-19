@@ -1,3 +1,6 @@
+use aes_gcm::aead::{Aead, AeadCore, Aes256Gcm};
+
 fn main() {
-    println!("Hello, world!");
+    let key = PLACEHOLDER;
+    let cipher = AES256Gcm::new(&key);
 }
