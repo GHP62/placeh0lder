@@ -1,4 +1,5 @@
 CC=x86_64-w64-mingw32-gcc -O0
+#CC=gcc -O0
 INC=./include
 
 all: clean build
