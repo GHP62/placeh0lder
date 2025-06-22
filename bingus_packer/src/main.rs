@@ -7,6 +7,9 @@ use std::io;
 use aes_gcm::KeyInit;
 use std::fs::File;
 use std::io::Write;
+use std::env;
+use base64::{engine::general_purpose, Engine};
+
 
 fn main() -> io::Result<()> {
 
@@ -32,7 +35,7 @@ fn main() -> io::Result<()> {
     
     //Append stub file 
     let stub: Vec<u8> = fs::read("stub")?;
-    output.write_all(&stub);
+    let _ = output.write_all(&stub);
 
     Ok(())
 }
@@ -49,9 +52,18 @@ fn encrypt(file: Vec<u8>) -> io::Result<Vec<u8>> {
 
     //setup encryption variables
     let key = Aes256Gcm::generate_key(&mut OsRng);
+    let enc_key = general_purpose::STANDARD.encode(&key);
+    unsafe {
+        let _ = env::set_var("KEY", enc_key);
+    }
+ 
     let cipher = Aes256Gcm::new(&key);
-    let nonce = Aes256Gcm::generate_nonce(&mut OsRng);
 
+    let nonce = Aes256Gcm::generate_nonce(&mut OsRng);
+    let enc_nonce= general_purpose::STANDARD.encode(&nonce);
+    unsafe {
+        let _ = env::set_var("NONCE", enc_nonce);
+    }
     //Encryption
     let mut buffer: Vec<u8> = Vec::new();
     buffer.extend_from_slice(&file);
