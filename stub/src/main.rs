@@ -1,44 +1,46 @@
 use aes_gcm::Aes256Gcm;
 use aes_gcm::KeyInit;
-use aes_gcm::aead::{AeadInPlace, Aead, AeadCore, generic_array::GenericArray};
-use aes_gcm::Nonce;
-use aes_gcm::Key;
+use aes_gcm::aead::{AeadInPlace, generic_array::GenericArray};
 use std::io;
 use std::io::prelude::*;
 use std::fs::File;
 use std::env;
 use std::io::SeekFrom;
-use aes::cipher::generic_array::{typenum::U16};
 
 fn main() -> io::Result<()> {
-    match env::var("key") {
-        Ok(key) => key,
-        Err(e) => e,
+
+    let key = match env::var("KEY") {
+        Ok(key) => key.into_bytes(),
+        Err(e) => e.to_string().into_bytes(),
     };
-    //Get env vars for decryption
-    let key = Key::from_slice(&env::var("KEY").expect("key").as_bytes());
-    let nonce = Nonce::from_slice(&env::var("NONCE").expect("nonce").as_bytes()); 
-    let size = env::var("SIZE")?; 
-    let filename = env::current_exe()?;
-    let file = File::open(&filename)?;
+
+    let nonce = match env::var("NONCE") {
+        Ok(nonce) => nonce.into_bytes(),
+        Err(e) => e.to_string().into_bytes(),
+    };
+
+    let size = match env::var("SIZE") {
+        Ok(size) => size.into_bytes(),
+        Err(e) => e.to_string().into_bytes(),
+    };
+    
+    let key_form = GenericArray::from_slice(&key).clone();
+
+    let nonce_form = GenericArray::from_slice(&nonce).clone();
+
+    let size_form: [u8; 4] = size.try_into().expect("");
     let mut buffer = Vec::new();
-    
-    
-    
-    //Read file with offest 
-    file.seek(SeekFrom::End(-1*size));
-    file.read_to_end(&mut buffer)?; 
+    let mut file = File::open(env::current_exe().expect(""))?;
+
+     let _ =file.seek(SeekFrom::End((-1*(i32::from_le_bytes(size_form))).into()));
+    let _ = file.read_to_end(&mut buffer)?; 
 
     //Decrypt 
-    let cipher = Aes256Gcm::new(&key);  
-    cipher.decrypt_in_place(&nonce, b"", &mut buffer);
+    let cipher = Aes256Gcm::new(&key_form);  
+    let _ = cipher.decrypt_in_place(&nonce_form, b"", &mut buffer);
 
 
     Ok(()) 
 
 }
 
-fn string_to_key(string: &String) -> io::Result<()>  {
-    let string_bytes = string.as_bytes();
-    return Key::<Aes256Gcm>::from_slice(&string_bytes).clone();
-}
