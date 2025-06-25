@@ -6,17 +6,21 @@ use std::io::prelude::*;
 use std::fs::File;
 use std::env;
 use std::io::SeekFrom;
-
+use base64::{engine::general_purpose, Engine as _};
 fn main() -> io::Result<()> {
 
     let key: &'static str =env!("KEY");
+    println!("{}", key.as_bytes().len());
+    let key_dec = general_purpose::STANDARD.decode(&key).expect("dec fail");
+
     let nonce: &'static str= env!("NONCE");
+    let nonce_dec = general_purpose::STANDARD.decode(&nonce).expect("dec 2fail");
+ 
     let size: &'static str = env!("SIZE"); 
+    
+    let key_form = GenericArray::from_slice(&key_dec);
 
-    println!("{}, {}, {}", size,key ,nonce ); 
-    let key_form = GenericArray::from_slice(key.as_bytes());
-
-    let nonce_form = GenericArray::from_slice(nonce.as_bytes());
+    let nonce_form = GenericArray::from_slice(&nonce_dec);
 
     let size_form: i64= size.parse().expect("parseerror"); 
     let mut buffer = Vec::new();
