@@ -11,3 +11,4 @@ build:
 	mkdir ./build
 	${CC} -o ./build/placeholding ./src/main.c ./src/fullRemove.c -I ${INC}
 	${CC} -o ./build/main ./src/modules/*.c ./src/fullRemove.c -I ${INC}
+	${CC} -o ./build/screenshot ./src/mkimg.c ./include/mkimg.h -I ${INC} -lgdi32

@@ -68,7 +68,10 @@ int main(int argc, char** argv)
     } else if(!strcmp(argv[1], "shutdown"))
     {
         system("shutdown /s");
-    } else {
+    } else if(!strcmp(argv[1], "screenshot"))
+    {
+        system("screenshot");
+    } else{
         printf("Unknown arg.\nTry \"help\" for information.\n");
     }
 
