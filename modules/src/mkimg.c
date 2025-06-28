@@ -562,6 +562,9 @@ int main(void)
     uint8_t *green = malloc(width * height);
     uint8_t *blue = malloc(width * height);
 
+    printf("%d, %d", width, height);
+    return 0;
+
     HDC dng = GetDC(NULL);
 
     for(int i = 0; i < height; i++)
