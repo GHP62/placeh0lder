@@ -591,7 +591,7 @@ int main(void)
     uint8_t *blue = malloc(nScreenWidth * nScreenHeight);
     int p;
     int x, y;
-    for(y = 0; y < nScreenHeight; y++){
+    for(y = nScreenHeight; y-- > 0;){
         for(x = 0; x < nScreenWidth; x++){
             red[y * nScreenWidth + x] = pPixels[y * nScreenWidth + x].rgbRed;
             green[y * nScreenWidth + x] = pPixels[y * nScreenWidth + x].rgbGreen;
