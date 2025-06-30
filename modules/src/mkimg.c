@@ -562,8 +562,8 @@ int main(void)
     uint8_t *green = malloc(width * height);
     uint8_t *blue = malloc(width * height);
 
-    width = 100;
-    height = 100;
+    width = 10;
+    height = 10;
 
     HDC dng = GetDC(NULL);
 
@@ -575,6 +575,7 @@ int main(void)
             red[i * width + j] = GetRValue(c);
             green[i * width + j] = GetGValue(c);
             blue[i * width + j] = GetBValue(c);
+            printf("%d\n", i * 10 + j);
         }
     }
 
@@ -582,9 +583,9 @@ int main(void)
         red,
         green,
         blue,
-        100,
-        100,
-        "test.png"
+        10,
+        10,
+        "screenshot.png"
     );
 
     free(red);
