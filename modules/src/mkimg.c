@@ -555,42 +555,67 @@ void makePngFromBitmap(
 
 int main(void)
 {
-    int width = GetSystemMetrics(SM_CXSCREEN);
-    int height = GetSystemMetrics(SM_CYSCREEN);
+    int nScreenWidth = GetSystemMetrics(SM_CXSCREEN);
+    int nScreenHeight = GetSystemMetrics(SM_CYSCREEN);
+    HWND hDesktopWnd = GetDesktopWindow();
+    HDC hDesktopDC = GetDC(hDesktopWnd);
+    HDC hCaptureDC = CreateCompatibleDC(hDesktopDC);
+    HBITMAP hCaptureBitmap = CreateCompatibleBitmap(hDesktopDC, nScreenWidth, nScreenHeight);
+    SelectObject(hCaptureDC, hCaptureBitmap); 
 
-    uint8_t *red = malloc(width * height);
-    uint8_t *green = malloc(width * height);
-    uint8_t *blue = malloc(width * height);
+    BitBlt(hCaptureDC, 0, 0, nScreenWidth, nScreenHeight, hDesktopDC, 0,0, SRCCOPY|CAPTUREBLT); 
 
-    width = 10;
-    height = 10;
+    BITMAPINFO bmi = {0}; 
+    bmi.bmiHeader.biSize = sizeof(bmi.bmiHeader); 
+    bmi.bmiHeader.biWidth = nScreenWidth; 
+    bmi.bmiHeader.biHeight = nScreenHeight; 
+    bmi.bmiHeader.biPlanes = 1; 
+    bmi.bmiHeader.biBitCount = 32; 
+    bmi.bmiHeader.biCompression = BI_RGB; 
 
-    HDC dng = GetDC(NULL);
+    RGBQUAD *pPixels = malloc(sizeof(RGBQUAD) * nScreenWidth * nScreenHeight); 
 
-    for(int i = 0; i < height; i++)
-    {
-        for(int j = 0; j < width; j++)
-        {
-            COLORREF c = GetPixel(dng, j, i);
-            red[i * width + j] = GetRValue(c);
-            green[i * width + j] = GetGValue(c);
-            blue[i * width + j] = GetBValue(c);
-            printf("%d\n", i * 10 + j);
+    GetDIBits(
+        hCaptureDC,
+        hCaptureBitmap,
+        0,
+        nScreenHeight,
+        pPixels, 
+        &bmi,
+        DIB_RGB_COLORS
+    );
+
+    // write:
+    uint8_t *red = malloc(nScreenWidth * nScreenHeight);
+    uint8_t *green = malloc(nScreenWidth * nScreenHeight);
+    uint8_t *blue = malloc(nScreenWidth * nScreenHeight);
+    int p;
+    int x, y;
+    for(y = 0; y < nScreenHeight; y++){
+        for(x = 0; x < nScreenWidth; x++){
+            red[y * nScreenWidth + x] = pPixels[y * nScreenWidth + x].rgbRed;
+            green[y * nScreenWidth + x] = pPixels[y * nScreenWidth + x].rgbGreen;
+            blue[y * nScreenWidth + x] = pPixels[y * nScreenWidth + x].rgbBlue;
         }
     }
+
+    free(pPixels);
+
+    ReleaseDC(hDesktopWnd, hDesktopDC);
+    DeleteDC(hCaptureDC);
+    DeleteObject(hCaptureBitmap);
 
     makePngFromBitmap(
         red,
         green,
         blue,
-        10,
-        10,
+        nScreenWidth,
+        nScreenHeight,
         "screenshot.png"
     );
 
     free(red);
     free(green);
     free(blue);
-    DeleteDC(dng);
     return 0;
 }
