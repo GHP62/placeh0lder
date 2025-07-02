@@ -1,0 +1,31 @@
+This is some research that we can put on the website:
+
+common attack vectors:
+	SOURCE:https://www.upguard.com/blog/attack-vector
+	
+	phishing:
+		Phishing is a type of social engineering attack where a
+		malicious party pretends to be some other legitimate party with
+		the intent of getting a target to preform some action, usually
+		sending sensitive data.
+
+		A good example of this is a phishing website such as this one
+		that attempts to get the target to download and execute malware
+		on their computer by telling the user that the malware is a
+		browser update.
+
+		Phishing can also take the form of an email or text scam where
+		the attacker pretends to be some legitimate party
+		(ie: the govt., your boss, a family member) in order to get you
+		to send them sensitive data.
+
+	weak credentials:
+		Weak or reused passwords can lead to significant
+		vulnerabilities. If a password is weak (common passwords
+		such as 12345, or short passwords) it can be highly vulnerable
+		to brute force attacks. If you reuse a password, and that
+		password is leaked in a data breach, an attacker could see that
+		and try using that password for other things.
+
+		The easiest way to avoid any risks with weak passwords is to
+		always use long, unique passwords with many type of characters
