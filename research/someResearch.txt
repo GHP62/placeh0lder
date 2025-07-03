@@ -28,4 +28,14 @@ common attack vectors:
 		and try using that password for other things.
 
 		The easiest way to avoid any risks with weak passwords is to
-		always use long, unique passwords with many type of characters
+		always use long, unique passwords with many type of characters.
+		Something like "Q24:e!@H7n$w3rD" would be a much stronger
+		password than "password123".
+
+	session hijacking:
+		When you log on to most websites that have a log in, the website
+		stores a session token on your computer so that if you try to
+		log in to that website again from that computer, the website
+		will know that it is you logging in. If an attacker is able to
+		veiw session tokens on your computer, then those can be used to
+		gain acces to most of your log ins.
