@@ -7,9 +7,28 @@ common attack vectors:
 		Phishing is a type of social engineering attack where a
 		malicious party pretends to be some other legitimate party with
 		the intent of getting a target to preform some action, usually
-		sending sensitive data.
+		sending sensitive data or transfering money.
 
-		A good example of this is a phishing website such as this one
+		The main goal of the attacker in this case is to make the
+		target trust them. Therefore, the best way defend against such
+		an attack is always verify information that you are given
+		online. For example, if someone sends you an email claiming
+		that they are a relative, and then asks for money, you should
+		verify that the person who sent the email is who they say they
+		are.
+
+		In the case that the attacker is trying to steal money, there
+		are some common red flags that you should look out for. The
+		attacker in this case would want to steal money in such a way
+		that it can not be easily tracked. If anyone requests money in
+		the form of gift cards, or cryptocurrency, it can be a red flag
+		as it is much harder to track those methods of payment. The
+		government (at time of writing) would never request that you pay
+		a fine in the form of Target gift cards, however, a scammer
+		pretending to be the government would do this since it is hard
+		to track gift cards.
+
+		Another good example of phishing is a website such as this one
 		that attempts to get the target to download and execute malware
 		on their computer by telling the user that the malware is a
 		browser update.
@@ -33,9 +52,18 @@ common attack vectors:
 		password than "password123".
 
 	session hijacking:
-		When you log on to most websites that have a log in, the website
+		When you log on to most websites that have a login, the website
 		stores a session token on your computer so that if you try to
 		log in to that website again from that computer, the website
 		will know that it is you logging in. If an attacker is able to
 		veiw session tokens on your computer, then those can be used to
-		gain acces to most of your log ins.
+		gain acces to most of your logins.
+
+	trojans:
+		This type of attack is one of the main reasons that downloading
+		pirated content can be dangerous. Much like the Trojan Horse,
+		a trojan is malware that is added to some other thing that the
+		target is trying to download. For example, a virus may be added
+		to a pirated game, then when a target downloads the pirated game,
+		the virus that was added to it also runs when the game is run,
+		and the target computer is then infected.
