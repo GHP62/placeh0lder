@@ -1,8 +1,9 @@
 This is some research that we can put on the website:
 
 common attack vectors:
-	SOURCE:https://www.upguard.com/blog/attack-vector
-	
+
+	source:	https://www.microsoft.com/en-us/security/business/security-101/
+		what-is-phishing
 	phishing:
 		Phishing is a type of social engineering attack where a
 		malicious party pretends to be some other legitimate party with
@@ -28,16 +29,12 @@ common attack vectors:
 		pretending to be the government would do this since it is hard
 		to track gift cards.
 
-		Another good example of phishing is a website such as this one
-		that attempts to get the target to download and execute malware
-		on their computer by telling the user that the malware is a
-		browser update.
-
 		Phishing can also take the form of an email or text scam where
 		the attacker pretends to be some legitimate party
 		(ie: the govt., your boss, a family member) in order to get you
 		to send them sensitive data.
 
+	SOURCE:	https://www.upguard.com/blog/attack-vector
 	weak credentials:
 		Weak or reused passwords can lead to significant
 		vulnerabilities. If a password is weak (common passwords
@@ -51,6 +48,7 @@ common attack vectors:
 		Something like "Q24:e!@H7n$w3rD" would be a much stronger
 		password than "password123".
 
+	SOURCE:	https://www.upguard.com/blog/attack-vector
 	session hijacking:
 		When you log on to most websites that have a login, the website
 		stores a session token on your computer so that if you try to
@@ -59,6 +57,7 @@ common attack vectors:
 		veiw session tokens on your computer, then those can be used to
 		gain acces to most of your logins.
 
+	SOURCE: https://www.avast.com/c-trojan
 	trojans:
 		This type of attack is one of the main reasons that downloading
 		pirated content can be dangerous. Much like the Trojan Horse,
@@ -67,3 +66,21 @@ common attack vectors:
 		to a pirated game, then when a target downloads the pirated game,
 		the virus that was added to it also runs when the game is run,
 		and the target computer is then infected.
+
+	SOURCE: https://www.proofpoint.com/us/blog/threat-insight/are-you-sure-
+		your-browser-date-current-landscape-fake-browser-updates
+	fake browser updates:
+
+		Fake browser updates, such as this website, are a common method
+		for infecting computers with malware. These attacks work by
+		making the target download and run maleware thinking that it is
+		a browser update.
+	
+		the eaiest way to protect against such attacks is to know that
+		a legitimate browser update would never be on a website itself,
+		and such an update would install itself automaticaly, and would
+		not need the user to run a file.
+
+		The main thing to remember is that if a website ever says that
+		you need to download a browser update to view the constent of a
+		webpage, do not trust it.
