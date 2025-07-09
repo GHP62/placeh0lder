@@ -2,9 +2,209 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>title</title>
+    <title>Phishing Awareness Landing Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Lora:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #1c1515;
+            --color-primary: #032c4d;
+            --color-secondary: #615f5f;
+            --color-accent: #fff0f5;
+        }
+        body {
+            margin: 0;
+            font-family: 'Noto Sans', Arial, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-accent);
+        }
+        .top-banner {
+            background: var(--color-primary);
+            color: var(--color-accent);
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: #222222;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(28,21,21,0.2);
+            padding: .5rem 2.5rem .3rem
+            ;
+        }
+        h1{
+            font-family: 'Lora', serif;
+            color: var(--color-accent);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        p, li, .stat-text {
+            font-size: 1.1rem;
+            color: var(--color-accent);
+            line-height: 1.7;
+        }
+        .video-demo-div {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: center;
+        }
+        .video-demo {
+            background: var(--color-secondary);
+            color: var(--color-bg);
+            border-radius: 8px;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            text-align: center;
+            min-height: 200px;
+            width: 90%;
+        }
+        .stats-zigzag {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            display: flex;
+            align-items: center;
+            background: var(--color-primary);
+            color: var(--color-accent);
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(3,44,77,0.15);
+            padding: 1.2rem 1.5rem;
+            width: 90%;
+        }
+        .stat-card.left {
+            flex-direction: row;
+            margin-left: 0;
+            margin-right: auto;
+        }
+        .stat-card.right {
+            flex-direction: row-reverse;
+            margin-right: 0;
+            margin-left: auto;
+        }
+        .stat-img {
+            width: 70px;
+            height: 70px;
+            background: var(--color-secondary);
+            border-radius: 50%;
+            margin: 0 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--color-accent);
+            object-fit: cover;
+        }
+        .stat-text {
+            flex: 1;
+        }
+        footer {
+            background: var(--color-primary);
+            color: var(--color-accent);
+            text-align: center;
+            padding: 1.2rem 0 0.7rem 0;
+            font-size: 0.95rem;
+            margin-top: 3rem;
+        }
+        a, a:visited {
+            color: var(--color-accent);
+            text-decoration: underline;
+            word-break: break-all;
+        }
+        @media (max-width: 800px) {
+            .stat-card, .stat-card.left, .stat-card.right {
+                flex-direction: column !important;
+                align-items: flex-start;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+            .stat-img {
+                margin: 0 0 1rem 0;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem 0.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="top-banner">
+        You aren't alone—here's how many people fell for the pop-up too: <span id="visitor-count">...</span>
+    </div>
+    <div class="container">
+        <h1>What is Phishing?</h1>
+        <p>Phishing is a prevalent and dangerous form of social engineering in which an attacker impersonates a legitimate individual, organization, or institution with the intent of manipulating a target into revealing sensitive information or performing unauthorized actions, such as transferring funds or downloading malicious files. These attacks are often carried out through emails, text messages, or fraudulent websites that appear credible to unsuspecting users. The core strategy behind phishing is to exploit human trust. An attacker may, for example, pose as a family member in need of urgent financial assistance or claim to represent a trusted organization such as a bank or government agency. To defend against such threats, it is critical that individuals adopt a practice of independently verifying all suspicious communications, particularly those requesting personal data or money. Contacting the supposed sender through a known, trusted channel can help prevent falling victim to these schemes.</p>
+
+        <h1>Phishing Prevention</h1>
+        <p>There are several common warning signs that can help identify phishing attempts. Attackers often request payment in untraceable formats, such as gift cards or cryptocurrency, because these are more difficult for authorities to track. It is important to remember that no legitimate government body or reputable company would ever request payment in these forms. Additionally, phishing attempts may direct users to fake websites that prompt the download of malware disguised as a legitimate software update. In more sophisticated attacks, the malicious party may pose as someone familiar to the target—such as a supervisor or relative—in order to create a false sense of urgency and trust, increasing the likelihood of a successful exploit.</p>
+
+        <h1>Fake Browser Updates</h1>
+        <p>Fake browser update prompts are a frequently used tactic by cybercriminals to deliver malware to unsuspecting users. These attacks typically occur on malicious or compromised websites that display convincing messages claiming the user's web browser is out of date. The user is then instructed to download and run a file, which is in fact malware disguised as a legitimate software update. This form of deception is particularly effective because it preys on a user’s desire to maintain up-to-date and secure software, while also exploiting a lack of technical awareness about how legitimate browser updates are delivered.</p>
+
+        <h1>Fake Browser Update Prevention</h1>
+        <p>To defend against this type of attack, it is essential to understand how real browser updates work. Official updates from major browsers such as Chrome, Firefox, or Edge are never distributed through random websites. These updates are either installed automatically in the background or are available through the browser's built-in update mechanisms, not through third-party download links or pop-up messages. If a website prompts you to download a browser update in order to view its content, this is almost certainly a red flag. No legitimate website will require a manual browser update before granting access to its material. The most effective precaution users can take is to avoid downloading files from untrusted websites and to only accept software updates directly from official sources. If there is ever uncertainty about whether a browser is up to date, users should navigate to the browser’s settings menu and check for updates manually. Ultimately, the key principle to remember is that legitimate browser updates do not originate from websites prompting downloads, and any such prompt should be treated with suspicion.</p>
+
+        <h1>Additional Methods</h1>
+        <p>Other common cybersecurity threats include the use of weak or reused passwords, which expose users to brute force and credential stuffing attacks; session hijacking, in which attackers intercept or steal session tokens to gain unauthorized access to web applications; and trojans, a class of malware embedded in seemingly legitimate software—often pirated content—that activates upon execution and compromises the host system.</p>
+
+        <div class="video-demo-div"><div class="video-demo">
+            <h1>Video Demonstration</h1>
+            <p>Coming soon: A video demonstration showing what could have happened if this was real.</p>
+            <!-- Video will be embedded here -->
+        </div></div>
+
+        <div class="stats-zigzag">
+            <div class="stat-card left">
+                <div class="stat-img">
+                    <span>📊</span>
+                </div>
+                <div class="stat-text">
+                    Of the 60% of Americans exposed to fraud, 26% were via phishing attacks.
+                </div>
+            </div>
+            <div class="stat-card right">
+                <div class="stat-img">
+                    <span>🧑‍💻</span>
+                </div>
+                <div class="stat-text">
+                    Millennials and Gen-Z internet users are most likely to fall victim to phishing attacks.
+                </div>
+            </div>
+            <div class="stat-card left">
+                <div class="stat-img">
+                    <span>🔒</span>
+                </div>
+                <div class="stat-text">
+                    95% of cyber attacks are phishing related
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        References:<br>
+        <a href="https://www.microsoft.com/en-us/security/business/security-101/what-is-phishing" target="_blank">Microsoft Security 101</a>,
+        <a href="https://www.upguard.com/blog/attack-vector" target="_blank">UpGuard</a>,
+        <a href="https://www.proofpoint.com/us/blog/threat-insight/are-you-sure-your-browser-date-current-landscape-fake-browser-updates" target="_blank">Proofpoint</a>,
+        <a href="https://www.cyber.nj.gov/Home/Components/News/News/1731/214" target="_blank">Cyber NJ</a>,
+        <a href="https://www.getastra.com/blog/security-audit/phishing-attack-statistics/" target="_blank">Astra Security</a>,
+        <a href="https://hoxhunt.com/guide/phishing-trends-report#key-phishing-statistics-for-2025" target="_blank">Hoxhunt Phishing Trends 2025</a>
+    </footer>
+    <script>
+        // Placeholder for visitor count logic...in production, this would fetch from a backend/database
+        document.getElementById('visitor-count').textContent = '1234'; // Example static value
+    </script>
 </body>
 </html>
